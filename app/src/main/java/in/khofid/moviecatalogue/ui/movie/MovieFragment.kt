@@ -3,15 +3,16 @@ package `in`.khofid.moviecatalogue.ui.movie
 
 import `in`.khofid.moviecatalogue.R
 import `in`.khofid.moviecatalogue.data.Movie
+import `in`.khofid.moviecatalogue.ui.detail.DetailMovieActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_movie.*
+import org.jetbrains.anko.support.v4.startActivity
 
 
 /**
@@ -43,7 +44,7 @@ class MovieFragment : Fragment() {
             viewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
             movies = viewModel.getMovies()
             adapter = MovieAdapter(context!!, movies) {
-                Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
+                startActivity<DetailMovieActivity>("movieId" to it.id)
             }
             rv_movie.adapter = adapter
             rv_movie.layoutManager = LinearLayoutManager(context)
