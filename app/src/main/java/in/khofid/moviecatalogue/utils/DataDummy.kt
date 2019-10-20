@@ -13,10 +13,10 @@ object DataDummy {
     var gson = Gson()
 
     fun generateDummyMovies() =
-        gson.fromJson(loadJSON("assets/movies.json"), MovieResponse::class.java).results
+        gson.fromJson(loadJSON("movies.json"), MovieResponse::class.java).results
 
     fun generateDummyTvShow() =
-        gson.fromJson(loadJSON("assets/tv.json"), TvResponse::class.java).results
+        gson.fromJson(loadJSON("tv.json"), TvResponse::class.java).results
 
     fun loadJSON(fileSource: String): String? {
         var json: String? = null
