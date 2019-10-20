@@ -5,5 +5,7 @@
     <string name="tv">TV Show</string>
     <string name="hello_blank_movie">Hello Movie</string>
     <string name="hello_blank_tv">Hello TV</string>
+    <string name="title_name">Title</string>
+    <string name="overview">Overview</string>
 
 </resources>
