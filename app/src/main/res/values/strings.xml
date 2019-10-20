@@ -7,5 +7,8 @@
     <string name="hello_blank_tv">Hello TV</string>
     <string name="title_name">Title</string>
     <string name="overview">Overview</string>
+    <string name="backdrop">Backdrop</string>
+    <string name="poster">Poster</string>
+    <string name="title">Title</string>
 
 </resources>

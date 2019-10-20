@@ -5,6 +5,7 @@ ext {
     nav_version = "2.1.0"
     glideVersion = '4.9.0'
     archLifecycleVersion = '2.0.0'
+    anko_version = '0.10.7'
 }
 
 buildscript {

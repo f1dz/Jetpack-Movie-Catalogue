@@ -1,8 +1,11 @@
 package `in`.khofid.moviecatalogue.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-data class Movie(
+@Parcelize
+data class Movie (
     @SerializedName("id")
     val id: Int,
     @SerializedName("original_title")
@@ -15,4 +18,4 @@ data class Movie(
     val backdrop: String,
     @SerializedName("vote_average")
     val vote: Float
-)
+): Parcelable
