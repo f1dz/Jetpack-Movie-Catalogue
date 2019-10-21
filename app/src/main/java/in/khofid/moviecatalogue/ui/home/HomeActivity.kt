@@ -19,9 +19,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         nav_view.setOnNavigationItemSelectedListener {
-            var fragment: Fragment?
-
-            fragment = when (it.itemId) {
+            val fragment: Fragment? = when (it.itemId) {
                 R.id.action_movie -> MovieFragment.newInstance()
                 R.id.action_tv -> TvFragment.newInstance()
                 else -> null

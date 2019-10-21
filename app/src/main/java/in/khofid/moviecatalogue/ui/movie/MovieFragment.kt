@@ -20,9 +20,9 @@ import org.jetbrains.anko.support.v4.startActivity
  */
 class MovieFragment : Fragment() {
 
-    lateinit var viewModel: MovieViewModel
-    lateinit var movies: List<Movie>
-    lateinit var adapter: MovieAdapter
+    private lateinit var viewModel: MovieViewModel
+    private lateinit var movies: List<Movie>
+    private lateinit var adapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

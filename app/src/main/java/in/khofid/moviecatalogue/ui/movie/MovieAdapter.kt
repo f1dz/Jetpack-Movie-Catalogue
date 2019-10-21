@@ -23,7 +23,7 @@ class MovieAdapter(
     override fun getItemCount() = movies.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(movies.get(position), listener)
+        holder.bindItem(movies[position], listener)
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
