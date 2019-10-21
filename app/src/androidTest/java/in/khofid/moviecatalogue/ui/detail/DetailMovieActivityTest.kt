@@ -14,7 +14,7 @@ import org.junit.Test
 
 class DetailMovieActivityTest {
 
-    var dummyMovie = DataDummy.generateDummyMovies().get(0)
+    var dummyMovie = DataDummy.generateDummyMovies()[0]
 
     @Rule
     @JvmField
@@ -22,7 +22,7 @@ class DetailMovieActivityTest {
         object : ActivityTestRule<DetailMovieActivity>(DetailMovieActivity::class.java) {
 
             override fun getActivityIntent(): Intent {
-                val targetContext = InstrumentationRegistry.getInstrumentation().getTargetContext()
+                val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
                 val result = Intent(targetContext, DetailMovieActivity::class.java)
                 result.putExtra("movieId", dummyMovie.id)
                 return result

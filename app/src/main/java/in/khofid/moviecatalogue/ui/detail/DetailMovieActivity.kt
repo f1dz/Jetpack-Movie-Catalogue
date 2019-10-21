@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.activity_detail_movie.*
 
 class DetailMovieActivity : AppCompatActivity() {
 
-    var movieId: Int = 0
+    private var movieId: Int = 0
     lateinit var movie: Movie
-    lateinit var viewModel: DetailMovieViewModel
+    private lateinit var viewModel: DetailMovieViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

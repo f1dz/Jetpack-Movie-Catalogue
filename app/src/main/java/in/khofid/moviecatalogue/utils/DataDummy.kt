@@ -10,7 +10,7 @@ import java.io.InputStream
 
 object DataDummy {
 
-    var gson = Gson()
+    private var gson = Gson()
 
     fun generateDummyMovies() =
         gson.fromJson(loadJSON("movies.json"), MovieResponse::class.java).results
@@ -18,10 +18,10 @@ object DataDummy {
     fun generateDummyTvShow() =
         gson.fromJson(loadJSON("tv.json"), TvResponse::class.java).results
 
-    fun loadJSON(fileSource: String): String? {
+    private fun loadJSON(fileSource: String): String? {
         var json: String? = null
         try {
-            var input: InputStream = this.javaClass.classLoader!!.getResourceAsStream(fileSource) //context.assets.open(fileSource)
+            val input: InputStream = this.javaClass.classLoader!!.getResourceAsStream(fileSource) //context.assets.open(fileSource)
             val size = input.available()
             val buffer = ByteArray(size)
             input.read(buffer)

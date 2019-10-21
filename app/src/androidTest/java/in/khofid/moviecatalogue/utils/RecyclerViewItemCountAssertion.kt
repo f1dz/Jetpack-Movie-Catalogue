@@ -8,15 +8,15 @@ import org.hamcrest.core.Is.`is`
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertThat
 
-class RecyclerViewItemCountAssertion(val expectedCount: Int): ViewAssertion {
+class RecyclerViewItemCountAssertion(private val expectedCount: Int): ViewAssertion {
 
     override fun check(view: View?, noViewFoundException: NoMatchingViewException?) {
         if(noViewFoundException != null) {
             throw noViewFoundException
         }
 
-        var rv = view as RecyclerView
-        var adapter = rv.adapter
+        val rv = view as RecyclerView
+        val adapter = rv.adapter
         assertNotNull(adapter)
         assertThat(adapter!!.itemCount, `is`(expectedCount))
     }

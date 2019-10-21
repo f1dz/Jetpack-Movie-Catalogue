@@ -13,7 +13,7 @@ class SingleFragmentActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var content: View = FrameLayout(this)
+        val content: View = FrameLayout(this)
         val params = FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT, Gravity.CENTER
         )
@@ -26,12 +26,6 @@ class SingleFragmentActivity: AppCompatActivity() {
     fun setFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .add(R.id.container, fragment, "TEST")
-            .commit()
-    }
-
-    fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .add(R.id.container, fragment)
             .commit()
     }
 }

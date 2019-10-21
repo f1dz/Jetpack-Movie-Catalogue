@@ -19,8 +19,8 @@ import org.jetbrains.anko.support.v4.startActivity
  */
 class TvFragment : Fragment() {
 
-    lateinit var viewModel: TvShowViewModel
-    lateinit var tvShows: List<TvShow>
+    private lateinit var viewModel: TvShowViewModel
+    private lateinit var tvShows: List<TvShow>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

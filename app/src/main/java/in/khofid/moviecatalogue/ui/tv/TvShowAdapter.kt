@@ -12,9 +12,9 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.rv_items.view.*
 
 class TvShowAdapter(
-    val context: Context,
-    val tvs:List<TvShow>,
-    val listener: (TvShow) -> Unit): RecyclerView.Adapter<TvShowAdapter.ViewHolder>() {
+    private val context: Context,
+    private val tvs:List<TvShow>,
+    private val listener: (TvShow) -> Unit): RecyclerView.Adapter<TvShowAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(LayoutInflater.from(context).inflate(R.layout.rv_items, parent, false))
@@ -22,7 +22,7 @@ class TvShowAdapter(
     override fun getItemCount()= tvs.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindView(tvs.get(position), listener)
+        holder.bindView(tvs[position], listener)
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {

@@ -20,7 +20,7 @@ class TvFragmentTest {
     @Rule
     @JvmField
     var activityRule = ActivityTestRule<SingleFragmentActivity>(SingleFragmentActivity::class.java)
-    var fragment = TvFragment()
+    private var fragment = TvFragment()
 
     @Before
     fun setUp() {

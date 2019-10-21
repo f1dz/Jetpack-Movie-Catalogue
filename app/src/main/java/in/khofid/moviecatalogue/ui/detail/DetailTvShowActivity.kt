@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.activity_detail_tv_show.*
 
 class DetailTvShowActivity : AppCompatActivity() {
 
-    var tvShowId: Int = 0
-    lateinit var tvShow: TvShow
-    lateinit var viewModel: DetailTvShowViewModel
+    private var tvShowId: Int = 0
+    private lateinit var tvShow: TvShow
+    private lateinit var viewModel: DetailTvShowViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

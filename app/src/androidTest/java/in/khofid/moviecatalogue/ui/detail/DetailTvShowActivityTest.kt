@@ -13,7 +13,7 @@ import org.junit.Test
 
 class DetailTvShowActivityTest {
 
-    var tvShow = DataDummy.generateDummyTvShow().get(0)
+    var tvShow = DataDummy.generateDummyTvShow()[0]
 
     @Rule
     @JvmField
