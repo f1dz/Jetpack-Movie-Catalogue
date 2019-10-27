@@ -1,7 +1,7 @@
 package `in`.khofid.moviecatalogue.ui.detail
 
 import `in`.khofid.moviecatalogue.R
-import `in`.khofid.moviecatalogue.data.Movie
+import `in`.khofid.moviecatalogue.data.model.Movie
 import `in`.khofid.moviecatalogue.utils.Constants
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

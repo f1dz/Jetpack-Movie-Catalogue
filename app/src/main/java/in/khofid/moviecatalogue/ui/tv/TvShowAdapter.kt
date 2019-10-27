@@ -1,7 +1,7 @@
 package `in`.khofid.moviecatalogue.ui.tv
 
 import `in`.khofid.moviecatalogue.R
-import `in`.khofid.moviecatalogue.data.TvShow
+import `in`.khofid.moviecatalogue.data.model.TvShow
 import `in`.khofid.moviecatalogue.utils.Constants
 import android.content.Context
 import android.view.LayoutInflater

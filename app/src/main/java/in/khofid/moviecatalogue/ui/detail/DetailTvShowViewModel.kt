@@ -1,6 +1,6 @@
 package `in`.khofid.moviecatalogue.ui.detail
 
-import `in`.khofid.moviecatalogue.data.TvShow
+import `in`.khofid.moviecatalogue.data.model.TvShow
 import `in`.khofid.moviecatalogue.utils.DataDummy
 import androidx.lifecycle.ViewModel
 

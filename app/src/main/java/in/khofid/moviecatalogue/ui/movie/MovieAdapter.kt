@@ -1,7 +1,7 @@
 package `in`.khofid.moviecatalogue.ui.movie
 
 import `in`.khofid.moviecatalogue.R
-import `in`.khofid.moviecatalogue.data.Movie
+import `in`.khofid.moviecatalogue.data.model.Movie
 import `in`.khofid.moviecatalogue.utils.Constants
 import android.content.Context
 import android.view.LayoutInflater
@@ -13,17 +13,24 @@ import kotlinx.android.synthetic.main.rv_items.view.*
 
 class MovieAdapter(
     private val context: Context,
-    private val movies: List<Movie>,
     private val listener: (Movie) -> Unit
     ): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+
+    private var mMovies: MutableList<Movie> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(LayoutInflater.from(context).inflate(R.layout.rv_items, parent, false))
 
-    override fun getItemCount() = movies.size
+    fun setMovies(movies: List<Movie>) {
+        mMovies.clear()
+        mMovies.addAll(movies)
+        notifyDataSetChanged()
+    }
+
+    override fun getItemCount() = mMovies.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(movies[position], listener)
+        holder.bindItem(mMovies[position], listener)
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
