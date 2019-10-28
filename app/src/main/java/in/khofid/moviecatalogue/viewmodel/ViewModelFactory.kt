@@ -3,13 +3,14 @@ package `in`.khofid.moviecatalogue.viewmodel
 import `in`.khofid.moviecatalogue.data.source.CatalogueRepository
 import `in`.khofid.moviecatalogue.di.Injection
 import `in`.khofid.moviecatalogue.ui.detail.DetailMovieViewModel
+import `in`.khofid.moviecatalogue.ui.detail.DetailTvShowViewModel
 import `in`.khofid.moviecatalogue.ui.movie.MovieViewModel
 import `in`.khofid.moviecatalogue.ui.tv.TvShowViewModel
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class ViewModelFactory(val catalogeuRepository: CatalogueRepository):
+class ViewModelFactory(val catalogueRepository: CatalogueRepository):
     ViewModelProvider.NewInstanceFactory() {
 
     companion object {
@@ -29,11 +30,13 @@ class ViewModelFactory(val catalogeuRepository: CatalogueRepository):
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(MovieViewModel::class.java)){
-            return MovieViewModel(catalogeuRepository) as (T)
+            return MovieViewModel(catalogueRepository) as (T)
         } else if(modelClass.isAssignableFrom(DetailMovieViewModel::class.java)){
-            return DetailMovieViewModel(catalogeuRepository) as (T)
+            return DetailMovieViewModel(catalogueRepository) as (T)
         } else if(modelClass.isAssignableFrom(TvShowViewModel::class.java)){
-            return TvShowViewModel(catalogeuRepository) as (T)
+            return TvShowViewModel(catalogueRepository) as (T)
+        } else if(modelClass.isAssignableFrom(DetailTvShowViewModel::class.java)){
+            return DetailTvShowViewModel(catalogueRepository) as (T)
         }
 
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

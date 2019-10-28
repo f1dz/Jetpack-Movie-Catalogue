@@ -25,7 +25,7 @@ class CatalogueRepository(val remoteRepository: RemoteRepository): CatalogueData
         return remoteRepository.getTvShows()
     }
 
-    override fun getTvShow(id: Int): TvShow {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getTvShow(id: Int): LiveData<TvShow> {
+        return remoteRepository.getTvShow(id)
     }
 }

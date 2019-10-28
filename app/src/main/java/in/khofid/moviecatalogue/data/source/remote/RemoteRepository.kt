@@ -74,4 +74,20 @@ class RemoteRepository {
         )
         return  tvShows
     }
+
+    fun getTvShow(id: Int): LiveData<TvShow> {
+        var tvShow: MutableLiveData<TvShow> = MutableLiveData()
+        apiClient.tvShow(id).enqueue(
+            object : Callback<TvShow> {
+                override fun onFailure(call: Call<TvShow>, t: Throwable) {
+                    Log.d(TAG, t.localizedMessage)
+                }
+
+                override fun onResponse(call: Call<TvShow>, response: Response<TvShow>) {
+                    tvShow.postValue(response.body())
+                }
+            }
+        )
+        return tvShow
+    }
 }
