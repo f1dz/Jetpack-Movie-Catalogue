@@ -14,16 +14,11 @@ class CatalogueRepository(val remoteRepository: RemoteRepository): CatalogueData
     }
 
     override fun getAllMovies(): LiveData<List<Movie>> {
-        var moviesResult: LiveData<List<Movie>>
-
-        moviesResult = remoteRepository.getMovies()
-
-        return moviesResult
+        return remoteRepository.getMovies()
     }
 
     override fun getMovie(id: Int): LiveData<Movie> {
-        var result: LiveData<Movie> = remoteRepository.getMovie(id)
-        return result
+        return remoteRepository.getMovie(id)
     }
 
     override fun getAllTvShow(): List<TvShow> {
