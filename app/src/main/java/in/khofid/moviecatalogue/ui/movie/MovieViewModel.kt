@@ -1,11 +1,12 @@
 package `in`.khofid.moviecatalogue.ui.movie
 
-import `in`.khofid.moviecatalogue.data.Movie
-import `in`.khofid.moviecatalogue.utils.DataDummy
+import `in`.khofid.moviecatalogue.data.model.Movie
+import `in`.khofid.moviecatalogue.data.source.CatalogueRepository
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
-class MovieViewModel: ViewModel() {
-    fun getMovies(): List<Movie> {
-        return DataDummy.generateDummyMovies()
+class MovieViewModel(val catalogueRepository: CatalogueRepository): ViewModel() {
+    fun getMovies(): LiveData<List<Movie>> {
+        return catalogueRepository.getAllMovies()
     }
 }

@@ -1,10 +1,15 @@
 package `in`.khofid.moviecatalogue.ui.detail
 
 import `in`.khofid.moviecatalogue.R
-import `in`.khofid.moviecatalogue.data.Movie
+import `in`.khofid.moviecatalogue.data.model.Movie
 import `in`.khofid.moviecatalogue.utils.Constants
+import `in`.khofid.moviecatalogue.utils.hide
+import `in`.khofid.moviecatalogue.utils.show
+import `in`.khofid.moviecatalogue.viewmodel.ViewModelFactory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail_movie.*
@@ -12,30 +17,41 @@ import kotlinx.android.synthetic.main.activity_detail_movie.*
 class DetailMovieActivity : AppCompatActivity() {
 
     private var movieId: Int = 0
-    lateinit var movie: Movie
+    lateinit var movie: LiveData<Movie>
     private lateinit var viewModel: DetailMovieViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_movie)
 
+        progressBar.show()
+
         movieId = intent.getIntExtra("movieId", 0)
 
-        viewModel = ViewModelProviders.of(this).get(DetailMovieViewModel::class.java)
+        viewModel = obtainViewModel(this)
         viewModel.movieId = movieId
-        movie = viewModel.getMovie()
 
-        tvTitle.text = movie.title
-        tvDescription.text = movie.description
-        ratingBar.rating = movie.vote/2
+        viewModel.getMovie().observe(this, Observer { movie ->
 
-        Glide.with(this)
-            .load(Constants.IMG_URL + movie.backdrop)
-            .into(imgBackdrop)
+            tvTitle.text = movie.title
+            tvDescription.text = movie.description
+            ratingBar.rating = (movie.vote / 2)
+
+            Glide.with(this)
+                .load(Constants.IMG_URL + movie.backdrop)
+                .into(imgBackdrop)
 
 
-        Glide.with(this)
-            .load(Constants.IMG_URL + movie.poster)
-            .into(imgPoster)
+            Glide.with(this)
+                .load(Constants.IMG_URL + movie.poster)
+                .into(imgPoster)
+
+            progressBar.hide()
+        })
+    }
+
+    fun obtainViewModel(activity: DetailMovieActivity): DetailMovieViewModel{
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProviders.of(activity, factory).get(DetailMovieViewModel::class.java)
     }
 }

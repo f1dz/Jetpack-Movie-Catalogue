@@ -1,16 +1,16 @@
 package `in`.khofid.moviecatalogue.ui.detail
 
-import `in`.khofid.moviecatalogue.data.Movie
-import `in`.khofid.moviecatalogue.utils.DataDummy
+import `in`.khofid.moviecatalogue.data.model.Movie
+import `in`.khofid.moviecatalogue.data.source.CatalogueRepository
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
-class DetailMovieViewModel: ViewModel() {
+class DetailMovieViewModel(val catalogueRepository: CatalogueRepository): ViewModel() {
 
     var movieId: Int = 0
 
-    fun getMovie(): Movie {
-        val movies = DataDummy.generateDummyMovies()
-        return movies.filter { it.id == movieId }[0]
+    fun getMovie(): LiveData<Movie> {
+        return catalogueRepository.getMovie(movieId)
     }
 
 }
