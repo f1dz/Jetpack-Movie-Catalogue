@@ -10,7 +10,7 @@ interface CatalogueDataSource {
 
     fun getMovie(id: Int): LiveData<Movie>
 
-    fun getAllTvShow(): List<TvShow>
+    fun getAllTvShow(): LiveData<List<TvShow>>
 
     fun getTvShow(id: Int): TvShow
 

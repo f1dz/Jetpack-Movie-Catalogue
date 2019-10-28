@@ -15,7 +15,7 @@ class TvShowViewModelTest {
 
     @Test
     fun getTvShows() {
-        val tvShows = viewModel.getTvShow()
+        val tvShows = viewModel.getTvShows()
         assertNotNull(tvShows)
         assertEquals(20, tvShows.size)
     }
