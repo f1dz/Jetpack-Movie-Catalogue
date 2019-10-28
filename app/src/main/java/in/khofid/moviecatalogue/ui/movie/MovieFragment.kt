@@ -2,6 +2,8 @@ package `in`.khofid.moviecatalogue.ui.movie
 
 
 import `in`.khofid.moviecatalogue.ui.detail.DetailMovieActivity
+import `in`.khofid.moviecatalogue.utils.hide
+import `in`.khofid.moviecatalogue.utils.show
 import `in`.khofid.moviecatalogue.viewmodel.ViewModelFactory
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -40,6 +42,9 @@ class MovieFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        progress_bar.show()
+
         if(activity != null) {
             viewModel = obtainViewModel(requireActivity())
             adapter = MovieAdapter(context!!) {
@@ -48,6 +53,7 @@ class MovieFragment : Fragment() {
 
             viewModel.getMovies().observe(this, Observer { movies ->
                 adapter.setMovies(movies)
+                progress_bar.hide()
             })
 
             rv_movie.adapter = adapter
