@@ -14,5 +14,7 @@ data class TvShow(
     @SerializedName("backdrop_path")
     val backdrop: String,
     @SerializedName("vote_average")
-    val rating: Float
+    val rating: Float,
+    @SerializedName("first_air_date")
+    val firstAirDate: String
 )

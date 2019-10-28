@@ -17,5 +17,7 @@ data class Movie (
     @SerializedName("backdrop_path")
     val backdrop: String,
     @SerializedName("vote_average")
-    val vote: Float
+    val vote: Float,
+    @SerializedName("release_date")
+    val releaseDate: String
 ): Parcelable

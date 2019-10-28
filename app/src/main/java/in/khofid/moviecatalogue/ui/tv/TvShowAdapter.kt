@@ -3,6 +3,7 @@ package `in`.khofid.moviecatalogue.ui.tv
 import `in`.khofid.moviecatalogue.R
 import `in`.khofid.moviecatalogue.data.model.TvShow
 import `in`.khofid.moviecatalogue.utils.Constants
+import `in`.khofid.moviecatalogue.utils.year
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -40,6 +41,7 @@ class TvShowAdapter(
                 .into(itemView.imgPoster)
 
             itemView.tvTitle.text = tv.title
+            itemView.tvYear.text = tv.firstAirDate.year()
             itemView.tvDescription.text = tv.description
             itemView.ratingBar.rating = tv.rating/2
 

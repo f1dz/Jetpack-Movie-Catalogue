@@ -3,6 +3,7 @@ package `in`.khofid.moviecatalogue.ui.movie
 import `in`.khofid.moviecatalogue.R
 import `in`.khofid.moviecatalogue.data.model.Movie
 import `in`.khofid.moviecatalogue.utils.Constants
+import `in`.khofid.moviecatalogue.utils.year
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,7 @@ class MovieAdapter(
                 .into(itemView.imgPoster)
 
             itemView.tvTitle.text = movie.title
+            itemView.tvYear.text = movie.releaseDate.year()
             itemView.tvDescription.text = movie.description
             itemView.ratingBar.rating = movie.vote/2
 

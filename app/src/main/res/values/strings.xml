@@ -8,5 +8,6 @@
     <string name="poster">Poster</string>
     <string name="title">Title</string>
     <string name="image_poster">Image Poster</string>
+    <string name="year">Year</string>
 
 </resources>
