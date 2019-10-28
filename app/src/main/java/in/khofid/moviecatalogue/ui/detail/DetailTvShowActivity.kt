@@ -4,6 +4,7 @@ import `in`.khofid.moviecatalogue.R
 import `in`.khofid.moviecatalogue.utils.Constants
 import `in`.khofid.moviecatalogue.utils.hide
 import `in`.khofid.moviecatalogue.utils.show
+import `in`.khofid.moviecatalogue.utils.year
 import `in`.khofid.moviecatalogue.viewmodel.ViewModelFactory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,7 @@ class DetailTvShowActivity : AppCompatActivity() {
         viewModel.tvShowId = tvShowId
         viewModel.getTvShow().observe(this, Observer { tvShow ->
             tvTitle.text = tvShow.title
+            tvYear.text = tvShow.firstAirDate.year()
             tvDescription.text = tvShow.description
             ratingBar.rating = (tvShow.rating / 2)
 

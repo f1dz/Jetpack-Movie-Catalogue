@@ -74,6 +74,16 @@
             app:layout_constraintBottom_toBottomOf="@+id/imgBackdrop"
             app:layout_constraintStart_toEndOf="@+id/imgPoster" />
 
+        <TextView
+            android:id="@+id/tvYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/year"
+            app:layout_constraintStart_toEndOf="@+id/imgPoster"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
