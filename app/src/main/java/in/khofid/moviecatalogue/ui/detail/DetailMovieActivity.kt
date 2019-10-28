@@ -3,6 +3,8 @@ package `in`.khofid.moviecatalogue.ui.detail
 import `in`.khofid.moviecatalogue.R
 import `in`.khofid.moviecatalogue.data.model.Movie
 import `in`.khofid.moviecatalogue.utils.Constants
+import `in`.khofid.moviecatalogue.utils.hide
+import `in`.khofid.moviecatalogue.utils.show
 import `in`.khofid.moviecatalogue.viewmodel.ViewModelFactory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +23,8 @@ class DetailMovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_movie)
+
+        progressBar.show()
 
         movieId = intent.getIntExtra("movieId", 0)
 
@@ -41,6 +45,8 @@ class DetailMovieActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(Constants.IMG_URL + movie.poster)
                 .into(imgPoster)
+
+            progressBar.hide()
         })
     }
 
