@@ -2,6 +2,7 @@ package `in`.khofid.moviecatalogue.viewmodel
 
 import `in`.khofid.moviecatalogue.data.source.CatalogueRepository
 import `in`.khofid.moviecatalogue.di.Injection
+import `in`.khofid.moviecatalogue.ui.detail.DetailMovieViewModel
 import `in`.khofid.moviecatalogue.ui.movie.MovieViewModel
 import android.app.Application
 import androidx.lifecycle.ViewModel
@@ -28,6 +29,8 @@ class ViewModelFactory(val catalogeuRepository: CatalogueRepository):
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(MovieViewModel::class.java)){
             return MovieViewModel(catalogeuRepository) as (T)
+        } else if(modelClass.isAssignableFrom(DetailMovieViewModel::class.java)){
+            return DetailMovieViewModel(catalogeuRepository) as (T)
         }
 
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

@@ -9,6 +9,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+const val TAG = "RemoteRepository"
 class RemoteRepository {
     private val apiClient = ApiClient.getClient().create(ApiInterface::class.java)
 
@@ -23,7 +24,7 @@ class RemoteRepository {
         apiClient.movies().enqueue(
             object : Callback<MovieResponse>{
                 override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                    Log.d("RemoteRepository", t.localizedMessage)
+                    Log.d(TAG, t.localizedMessage)
                 }
 
                 override fun onResponse(
@@ -36,5 +37,22 @@ class RemoteRepository {
             }
         )
         return movies
+    }
+
+    fun getMovie(id: Int): LiveData<Movie>{
+        var movie: MutableLiveData<Movie> = MutableLiveData()
+        apiClient.movie(id).enqueue(
+            object : Callback<Movie> {
+                override fun onFailure(call: Call<Movie>, t: Throwable) {
+                    Log.d(TAG, t.localizedMessage)
+                }
+
+                override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
+                    movie.postValue(response.body())
+                }
+
+            }
+        )
+        return  movie
     }
 }

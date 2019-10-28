@@ -8,7 +8,7 @@ interface CatalogueDataSource {
 
     fun getAllMovies(): LiveData<List<Movie>>
 
-    fun getMovie(id: Int): Movie
+    fun getMovie(id: Int): LiveData<Movie>
 
     fun getAllTvShow(): List<TvShow>
 

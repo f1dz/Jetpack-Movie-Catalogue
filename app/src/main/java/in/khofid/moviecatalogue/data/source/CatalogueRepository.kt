@@ -21,8 +21,9 @@ class CatalogueRepository(val remoteRepository: RemoteRepository): CatalogueData
         return moviesResult
     }
 
-    override fun getMovie(id: Int): Movie {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getMovie(id: Int): LiveData<Movie> {
+        var result: LiveData<Movie> = remoteRepository.getMovie(id)
+        return result
     }
 
     override fun getAllTvShow(): List<TvShow> {
