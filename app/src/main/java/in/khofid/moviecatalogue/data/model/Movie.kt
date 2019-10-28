@@ -1,4 +1,4 @@
-package `in`.khofid.moviecatalogue.data
+package `in`.khofid.moviecatalogue.data.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

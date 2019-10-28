@@ -1,7 +1,7 @@
 package `in`.khofid.moviecatalogue.utils
 
-import `in`.khofid.moviecatalogue.data.MovieResponse
-import `in`.khofid.moviecatalogue.data.TvResponse
+import `in`.khofid.moviecatalogue.data.source.remote.response.MovieResponse
+import `in`.khofid.moviecatalogue.data.source.remote.response.TvResponse
 import android.util.Log
 import com.google.gson.Gson
 import java.io.IOException
