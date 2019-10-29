@@ -2,12 +2,16 @@ package `in`.khofid.moviecatalogue.ui.detail
 
 import `in`.khofid.moviecatalogue.R
 import `in`.khofid.moviecatalogue.utils.DataDummy
+import `in`.khofid.moviecatalogue.utils.EspressoIdlingResource
 import android.content.Intent
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -27,6 +31,16 @@ class DetailTvShowActivityTest {
                 return result
             }
         }
+
+    @Before
+    fun setUp() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.espressoTestIdlingResource)
+    }
+
+    @After
+    fun tearDown() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.espressoTestIdlingResource)
+    }
 
     @Test
     fun loadTvShow() {
