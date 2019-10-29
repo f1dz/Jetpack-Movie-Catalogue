@@ -5,7 +5,7 @@ import `in`.khofid.moviecatalogue.data.source.CatalogueRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
-class DetailTvShowViewModel(val catalogueRepository: CatalogueRepository): ViewModel() {
+class DetailTvShowViewModel(private val catalogueRepository: CatalogueRepository): ViewModel() {
 
     var tvShowId: Int = 0
 

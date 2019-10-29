@@ -23,7 +23,7 @@ class RemoteRepository {
     }
 
     fun getMovies(): LiveData<List<Movie>>{
-        var movies: MutableLiveData<List<Movie>> = MutableLiveData()
+        val movies: MutableLiveData<List<Movie>> = MutableLiveData()
 
         EspressoIdlingResource.increment()
 
@@ -47,7 +47,7 @@ class RemoteRepository {
     }
 
     fun getMovie(id: Int): LiveData<Movie>{
-        var movie: MutableLiveData<Movie> = MutableLiveData()
+        val movie: MutableLiveData<Movie> = MutableLiveData()
 
         EspressoIdlingResource.increment()
 
@@ -68,7 +68,7 @@ class RemoteRepository {
     }
 
     fun getTvShows(): LiveData<List<TvShow>> {
-        var tvShows: MutableLiveData<List<TvShow>> = MutableLiveData()
+        val tvShows: MutableLiveData<List<TvShow>> = MutableLiveData()
 
         EspressoIdlingResource.increment()
 
@@ -89,7 +89,7 @@ class RemoteRepository {
     }
 
     fun getTvShow(id: Int): LiveData<TvShow> {
-        var tvShow: MutableLiveData<TvShow> = MutableLiveData()
+        val tvShow: MutableLiveData<TvShow> = MutableLiveData()
 
         EspressoIdlingResource.increment()
 

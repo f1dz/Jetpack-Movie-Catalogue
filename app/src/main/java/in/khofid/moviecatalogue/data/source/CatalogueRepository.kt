@@ -5,7 +5,7 @@ import `in`.khofid.moviecatalogue.data.model.TvShow
 import `in`.khofid.moviecatalogue.data.source.remote.RemoteRepository
 import androidx.lifecycle.LiveData
 
-class CatalogueRepository(val remoteRepository: RemoteRepository): CatalogueDataSource {
+class CatalogueRepository(private val remoteRepository: RemoteRepository): CatalogueDataSource {
 
     companion object {
         fun getInstance(remoteRepository: RemoteRepository): CatalogueRepository {

@@ -28,9 +28,9 @@ class TvShowViewModelTest {
 
     @Test
     fun getTvShows() {
-        var dummyTvShows = DataDummy.generateDummyTvShow()
+        val dummyTvShows = DataDummy.generateDummyTvShow()
 
-        var tvShows: MutableLiveData<List<TvShow>> = MutableLiveData()
+        val tvShows: MutableLiveData<List<TvShow>> = MutableLiveData()
         tvShows.postValue(dummyTvShows)
 
         `when`(catalogueRepository.getAllTvShow()).thenReturn(tvShows)

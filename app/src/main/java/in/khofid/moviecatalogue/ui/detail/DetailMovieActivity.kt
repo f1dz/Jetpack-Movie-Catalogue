@@ -52,7 +52,7 @@ class DetailMovieActivity : AppCompatActivity() {
         })
     }
 
-    fun obtainViewModel(activity: DetailMovieActivity): DetailMovieViewModel{
+    private fun obtainViewModel(activity: DetailMovieActivity): DetailMovieViewModel{
         val factory = ViewModelFactory.getInstance(activity.application)
         return ViewModelProviders.of(activity, factory).get(DetailMovieViewModel::class.java)
     }
