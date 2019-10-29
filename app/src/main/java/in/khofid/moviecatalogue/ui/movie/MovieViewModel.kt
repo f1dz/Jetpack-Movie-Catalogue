@@ -5,7 +5,7 @@ import `in`.khofid.moviecatalogue.data.source.CatalogueRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
-class MovieViewModel(val catalogueRepository: CatalogueRepository): ViewModel() {
+class MovieViewModel(private val catalogueRepository: CatalogueRepository): ViewModel() {
     fun getMovies(): LiveData<List<Movie>> {
         return catalogueRepository.getAllMovies()
     }

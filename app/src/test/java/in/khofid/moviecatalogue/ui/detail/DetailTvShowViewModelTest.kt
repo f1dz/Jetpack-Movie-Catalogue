@@ -30,7 +30,7 @@ class DetailTvShowViewModelTest {
 
     @Test
     fun getTvShow() {
-        var tvShow: MutableLiveData<TvShow> = MutableLiveData()
+        val tvShow: MutableLiveData<TvShow> = MutableLiveData()
         tvShow.postValue(dummyTvShow)
 
         `when`(repository.getTvShow(tvShowId)).thenReturn(tvShow)

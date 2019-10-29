@@ -85,5 +85,5 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
     androidTestImplementation "androidx.arch.core:core-testing:$archLifecycleVersion"
-
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
 }

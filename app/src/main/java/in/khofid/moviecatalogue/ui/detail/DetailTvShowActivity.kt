@@ -47,7 +47,7 @@ class DetailTvShowActivity : AppCompatActivity() {
         })
     }
 
-    fun obtainViewModel(activity: DetailTvShowActivity): DetailTvShowViewModel {
+    private fun obtainViewModel(activity: DetailTvShowActivity): DetailTvShowViewModel {
         val factory = ViewModelFactory.getInstance(activity.application)
         return ViewModelProviders.of(activity, factory).get(DetailTvShowViewModel::class.java)
     }

@@ -29,7 +29,7 @@ class DetailMovieViewModelTest {
 
     @Test
     fun getMovie() {
-        var movie: MutableLiveData<Movie> = MutableLiveData()
+        val movie: MutableLiveData<Movie> = MutableLiveData()
         movie.postValue(dummyMovie)
 
         `when`(repository.getMovie(movieId)).thenReturn(movie)

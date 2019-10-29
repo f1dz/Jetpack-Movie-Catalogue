@@ -2,13 +2,16 @@ package `in`.khofid.moviecatalogue.ui.tv
 
 import `in`.khofid.moviecatalogue.R
 import `in`.khofid.moviecatalogue.testing.SingleFragmentActivity
+import `in`.khofid.moviecatalogue.utils.EspressoIdlingResource
 import `in`.khofid.moviecatalogue.utils.RecyclerViewItemCountAssertion
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -24,7 +27,13 @@ class TvFragmentTest {
 
     @Before
     fun setUp() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.espressoTestIdlingResource)
         activityRule.activity.setFragment(fragment)
+    }
+
+    @After
+    fun tearDown(){
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.espressoTestIdlingResource)
     }
 
     @Test

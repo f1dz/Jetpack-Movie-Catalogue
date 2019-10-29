@@ -26,8 +26,8 @@ class MovieViewModelTest {
 
     @Test
     fun getMovies() {
-        var dummyMovies = DataDummy.generateDummyMovies()
-        var movies: MutableLiveData<List<Movie>> = MutableLiveData()
+        val dummyMovies = DataDummy.generateDummyMovies()
+        val movies: MutableLiveData<List<Movie>> = MutableLiveData()
         val observer = mock(Observer::class.java) as Observer<List<Movie>>
 
         movies.postValue(dummyMovies)

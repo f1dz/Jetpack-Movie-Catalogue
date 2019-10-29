@@ -10,7 +10,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class ViewModelFactory(val catalogueRepository: CatalogueRepository):
+class ViewModelFactory(private val catalogueRepository: CatalogueRepository):
     ViewModelProvider.NewInstanceFactory() {
 
     companion object {
@@ -29,16 +29,13 @@ class ViewModelFactory(val catalogueRepository: CatalogueRepository):
     }
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(MovieViewModel::class.java)){
-            return MovieViewModel(catalogueRepository) as (T)
-        } else if(modelClass.isAssignableFrom(DetailMovieViewModel::class.java)){
-            return DetailMovieViewModel(catalogueRepository) as (T)
-        } else if(modelClass.isAssignableFrom(TvShowViewModel::class.java)){
-            return TvShowViewModel(catalogueRepository) as (T)
-        } else if(modelClass.isAssignableFrom(DetailTvShowViewModel::class.java)){
-            return DetailTvShowViewModel(catalogueRepository) as (T)
+        return when {
+            modelClass.isAssignableFrom(MovieViewModel::class.java) -> MovieViewModel(catalogueRepository) as (T)
+            modelClass.isAssignableFrom(DetailMovieViewModel::class.java) -> DetailMovieViewModel(catalogueRepository) as (T)
+            modelClass.isAssignableFrom(TvShowViewModel::class.java) -> TvShowViewModel(catalogueRepository) as (T)
+            modelClass.isAssignableFrom(DetailTvShowViewModel::class.java) -> DetailTvShowViewModel(catalogueRepository) as (T)
+            else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
 
-        throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
 }
