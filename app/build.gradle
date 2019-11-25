@@ -52,6 +52,7 @@ dependencies {
     // Nav
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 
     //network
     implementation 'com.squareup.retrofit2:retrofit:2.6.2'
