@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -66,6 +68,11 @@ dependencies {
         exclude group: "androidx"
     }
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+    // ROOM
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
 
     // Dependencies for local unit tests
     testImplementation "junit:junit:$junitVersion"

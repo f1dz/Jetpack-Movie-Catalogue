@@ -13,12 +13,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 
 class DetailMovieActivity : AppCompatActivity() {
 
     private var movieId: Int = 0
     lateinit var movie: LiveData<Movie>
+    lateinit var mMovie: Movie
     private lateinit var viewModel: DetailMovieViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +35,8 @@ class DetailMovieActivity : AppCompatActivity() {
         viewModel.movieId = movieId
 
         viewModel.getMovie().observe(this, Observer { movie ->
+
+            mMovie = movie
 
             tvTitle.text = movie.title
             tvYear.text = movie.releaseDate.year()
@@ -49,11 +53,35 @@ class DetailMovieActivity : AppCompatActivity() {
                 .into(imgPoster)
 
             progressBar.hide()
+
+            favoriteState()
         })
+
+        fabFavorite.setOnClickListener { fabOnClick() }
     }
 
-    private fun obtainViewModel(activity: DetailMovieActivity): DetailMovieViewModel{
+    private fun obtainViewModel(activity: DetailMovieActivity): DetailMovieViewModel {
         val factory = ViewModelFactory.getInstance(activity.application)
         return ViewModelProviders.of(activity, factory).get(DetailMovieViewModel::class.java)
+    }
+
+    fun fabOnClick() {
+        if (viewModel.isFavorited(mMovie)) {
+            viewModel.removeFavorite(mMovie)
+            Snackbar.make(scrollView, getString(R.string.unfavorited, mMovie.title), Snackbar.LENGTH_SHORT).show()
+            fabFavorite.setImageDrawable(getDrawable(R.drawable.ic_favorite_disable))
+        } else {
+            viewModel.addFavorite(mMovie)
+            Snackbar.make(scrollView, getString(R.string.favorited, mMovie.title), Snackbar.LENGTH_SHORT).show()
+            fabFavorite.setImageDrawable(getDrawable(R.drawable.ic_favorite))
+        }
+    }
+
+    fun favoriteState(){
+        if (viewModel.isFavorited(mMovie)) {
+            fabFavorite.setImageDrawable(getDrawable(R.drawable.ic_favorite))
+        } else {
+            fabFavorite.setImageDrawable(getDrawable(R.drawable.ic_favorite_disable))
+        }
     }
 }

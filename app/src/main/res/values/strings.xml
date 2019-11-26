@@ -11,7 +11,8 @@
     <string name="year">Year</string>
     <string name="favorite">Favorite</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favorited">%1s added to favorited</string>
+    <string name="unfavorited">%1s removed from favorite</string>
 
 </resources>
