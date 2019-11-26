@@ -33,19 +33,31 @@ class CatalogueRepository(
         return remoteRepository.getTvShow(id)
     }
 
-    override fun getAllFavorites(): LiveData<List<Movie>> {
-        return localRepository.getAllMovies()
+    override fun getAllFavoriteMovies() = localRepository.getAllMovies()
+
+    override fun addFavoriteMovie(movie: Movie) {
+        localRepository.addFavoriteMovie(movie)
     }
 
-    override fun addFavorite(movie: Movie) {
-        localRepository.addFavorite(movie)
+    override fun removeFavoriteMovie(movie: Movie) {
+        localRepository.removeFavoriteMovie(movie)
     }
 
-    override fun removeFavorite(movie: Movie) {
-        localRepository.removeFavorite(movie)
+    override fun isFavoritedMovie(movie: Movie) =
+        localRepository.isFavoritedMovie(movie)
+
+    override fun getAllFavoriteTvShows() = localRepository.getAllTvShow()
+
+    override fun addFavoriteTvShow(tvShow: TvShow) {
+        localRepository.addFavoriteTvShow(tvShow)
     }
 
-    override fun isFavorited(movie: Movie): Boolean {
-        return localRepository.isFavorited(movie)
+    override fun removeFavoriteTvShow(tvShow: TvShow) {
+        localRepository.removeFavoriteTvShow(tvShow)
     }
+
+    override fun isFavoriteTvShow(tvShow: TvShow) =
+        localRepository.isFavoritedTvShow(tvShow)
+
+
 }

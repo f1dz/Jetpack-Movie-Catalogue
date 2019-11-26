@@ -16,14 +16,14 @@ class DetailMovieViewModel(
     }
 
     fun addFavorite(movie: Movie) {
-        catalogueRepository.addFavorite(movie)
+        catalogueRepository.addFavoriteMovie(movie)
     }
 
     fun removeFavorite(movie: Movie) {
-        catalogueRepository.removeFavorite(movie)
+        catalogueRepository.removeFavoriteMovie(movie)
     }
 
     fun isFavorited(movie: Movie): Boolean {
-        return catalogueRepository.isFavorited(movie)
+        return catalogueRepository.isFavoritedMovie(movie)
     }
 }
