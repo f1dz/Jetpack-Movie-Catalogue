@@ -56,6 +56,6 @@ class LocalRepository(context: Context) {
     }
 
     fun isFavoritedTvShow(tvShow: TvShow): Boolean {
-        return movieDao.getById(tvShow.id) != null
+        return tvShowDao.getById(tvShow.id) != null
     }
 }
