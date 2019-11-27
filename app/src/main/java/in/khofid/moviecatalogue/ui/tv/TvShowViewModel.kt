@@ -6,7 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
 class TvShowViewModel(private val catalogueRepository: CatalogueRepository): ViewModel() {
+    var page = 1
     fun getTvShows(): LiveData<List<TvShow>> {
-        return catalogueRepository.getAllTvShow()
+        return catalogueRepository.getAllTvShow(page)
     }
 }
