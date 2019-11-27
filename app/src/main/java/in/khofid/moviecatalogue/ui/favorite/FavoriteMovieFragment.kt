@@ -21,7 +21,7 @@ import org.jetbrains.anko.support.v4.startActivity
 
 class FavoriteMovieFragment : Fragment() {
 
-    private lateinit var viewModel: FavoriteMovieViewModel
+    private lateinit var viewModel: FavoriteViewModel
     private lateinit var adapter: MovieAdapter
 
     override fun onCreateView(
@@ -53,8 +53,8 @@ class FavoriteMovieFragment : Fragment() {
         }
     }
 
-    private fun obtainViewModel(activity: FragmentActivity): FavoriteMovieViewModel {
+    private fun obtainViewModel(activity: FragmentActivity): FavoriteViewModel {
         val factory = ViewModelFactory.getInstance(activity.application)
-        return  ViewModelProviders.of(activity, factory).get(FavoriteMovieViewModel::class.java)
+        return  ViewModelProviders.of(activity, factory).get(FavoriteViewModel::class.java)
     }
 }
