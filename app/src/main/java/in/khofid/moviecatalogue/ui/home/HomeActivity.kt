@@ -1,6 +1,7 @@
 package `in`.khofid.moviecatalogue.ui.home
 
 import `in`.khofid.moviecatalogue.R
+import `in`.khofid.moviecatalogue.ui.favorite.FavoriteFragment
 import `in`.khofid.moviecatalogue.ui.movie.MovieFragment
 import `in`.khofid.moviecatalogue.ui.tv.TvFragment
 import android.os.Bundle
@@ -22,6 +23,7 @@ class HomeActivity : AppCompatActivity() {
             val fragment: Fragment? = when (it.itemId) {
                 R.id.action_movie -> MovieFragment.newInstance()
                 R.id.action_tv -> TvFragment.newInstance()
+                R.id.action_favorite -> FavoriteFragment.newInstance()
                 else -> null
             }
 

@@ -9,5 +9,10 @@
     <string name="title">Title</string>
     <string name="image_poster">Image Poster</string>
     <string name="year">Year</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favorited">%1s added to favorited</string>
+    <string name="unfavorited">%1s removed from favorite</string>
 
 </resources>
