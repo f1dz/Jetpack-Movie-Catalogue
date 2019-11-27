@@ -14,4 +14,19 @@ interface CatalogueDataSource {
 
     fun getTvShow(id: Int): LiveData<TvShow>
 
+    fun getAllFavoriteMovies(): LiveData<List<Movie>>
+
+    fun addFavoriteMovie(movie: Movie)
+
+    fun removeFavoriteMovie(movie: Movie)
+
+    fun isFavoritedMovie(movie: Movie): Boolean
+
+    fun getAllFavoriteTvShows(): LiveData<List<TvShow>>
+
+    fun addFavoriteTvShow(tvShow: TvShow)
+
+    fun removeFavoriteTvShow(tvShow: TvShow)
+
+    fun isFavoriteTvShow(tvShow: TvShow): Boolean
 }

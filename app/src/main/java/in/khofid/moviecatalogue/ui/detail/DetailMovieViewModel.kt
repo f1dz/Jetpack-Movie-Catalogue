@@ -5,7 +5,9 @@ import `in`.khofid.moviecatalogue.data.source.CatalogueRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
-class DetailMovieViewModel(private val catalogueRepository: CatalogueRepository): ViewModel() {
+class DetailMovieViewModel(
+    private val catalogueRepository: CatalogueRepository
+): ViewModel() {
 
     var movieId: Int = 0
 
@@ -13,4 +15,15 @@ class DetailMovieViewModel(private val catalogueRepository: CatalogueRepository)
         return catalogueRepository.getMovie(movieId)
     }
 
+    fun addFavorite(movie: Movie) {
+        catalogueRepository.addFavoriteMovie(movie)
+    }
+
+    fun removeFavorite(movie: Movie) {
+        catalogueRepository.removeFavoriteMovie(movie)
+    }
+
+    fun isFavorited(movie: Movie): Boolean {
+        return catalogueRepository.isFavoritedMovie(movie)
+    }
 }
