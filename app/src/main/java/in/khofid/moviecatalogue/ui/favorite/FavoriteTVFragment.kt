@@ -3,7 +3,6 @@ package `in`.khofid.moviecatalogue.ui.favorite
 
 import `in`.khofid.moviecatalogue.R
 import `in`.khofid.moviecatalogue.ui.detail.DetailTvShowActivity
-import `in`.khofid.moviecatalogue.ui.tv.TvShowAdapter
 import `in`.khofid.moviecatalogue.utils.hide
 import `in`.khofid.moviecatalogue.utils.show
 import `in`.khofid.moviecatalogue.viewmodel.ViewModelFactory
@@ -22,7 +21,7 @@ import org.jetbrains.anko.support.v4.startActivity
 class FavoriteTVFragment : Fragment() {
 
     private lateinit var viewModel: FavoriteViewModel
-    private lateinit var adapter: TvShowAdapter
+    private lateinit var adapter: FavoriteTvShowAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,12 +37,12 @@ class FavoriteTVFragment : Fragment() {
 
         if(activity != null) {
             viewModel = obtainViewModel(requireActivity())
-            adapter = TvShowAdapter(context!!) {
+            adapter = FavoriteTvShowAdapter{
                 startActivity<DetailTvShowActivity>("tvShowId" to it.id)
             }
 
             viewModel.getTvShows().observe(this, Observer {
-                adapter.setTvShows(it)
+                adapter.submitList(it)
                 progressBar.hide()
             })
 

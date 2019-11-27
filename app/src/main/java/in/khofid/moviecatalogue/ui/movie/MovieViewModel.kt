@@ -6,7 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
 class MovieViewModel(private val catalogueRepository: CatalogueRepository): ViewModel() {
+
+    var page = 1
+
     fun getMovies(): LiveData<List<Movie>> {
-        return catalogueRepository.getAllMovies()
+        return catalogueRepository.getAllMovies(page)
     }
 }

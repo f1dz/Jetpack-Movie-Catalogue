@@ -3,7 +3,6 @@ package `in`.khofid.moviecatalogue.ui.favorite
 
 import `in`.khofid.moviecatalogue.R
 import `in`.khofid.moviecatalogue.ui.detail.DetailMovieActivity
-import `in`.khofid.moviecatalogue.ui.movie.MovieAdapter
 import `in`.khofid.moviecatalogue.utils.hide
 import `in`.khofid.moviecatalogue.utils.show
 import `in`.khofid.moviecatalogue.viewmodel.ViewModelFactory
@@ -22,7 +21,7 @@ import org.jetbrains.anko.support.v4.startActivity
 class FavoriteMovieFragment : Fragment() {
 
     private lateinit var viewModel: FavoriteViewModel
-    private lateinit var adapter: MovieAdapter
+    private lateinit var adapter: FavoriteMovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,12 +37,12 @@ class FavoriteMovieFragment : Fragment() {
 
         if(activity != null) {
             viewModel = obtainViewModel(requireActivity())
-            adapter = MovieAdapter(context!!) {
+            adapter = FavoriteMovieAdapter{
                 startActivity<DetailMovieActivity>("movieId" to it.id)
             }
 
-            viewModel.getMovies().observe(this, Observer { movies ->
-                adapter.setMovies(movies)
+            viewModel.getMovies().observe(this, Observer {
+                adapter.submitList(it)
                 progress_bar.hide()
             })
 

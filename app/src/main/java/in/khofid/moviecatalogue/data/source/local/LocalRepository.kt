@@ -6,6 +6,7 @@ import `in`.khofid.moviecatalogue.data.source.local.dao.MovieDao
 import `in`.khofid.moviecatalogue.data.source.local.dao.TvShowDao
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -31,6 +32,10 @@ class LocalRepository(context: Context) {
         return movieDao.all
     }
 
+    fun getFavoriteMoviesPaged(): DataSource.Factory<Int, Movie> {
+        return movieDao.allAsPaged()
+    }
+
     fun addFavoriteMovie(movie: Movie) {
         GlobalScope.launch(Dispatchers.Main) { movieDao.insert(movie) }
     }
@@ -45,6 +50,10 @@ class LocalRepository(context: Context) {
 
     fun getAllTvShow(): LiveData<List<TvShow>> {
         return tvShowDao.all
+    }
+
+    fun getFavoriteTvShowPaged(): DataSource.Factory<Int, TvShow> {
+        return tvShowDao.allAsPaged()
     }
 
     fun addFavoriteTvShow(tvShow: TvShow) {
