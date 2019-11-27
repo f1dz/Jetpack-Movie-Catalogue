@@ -26,13 +26,14 @@ class MovieViewModelTest {
 
     @Test
     fun getMovies() {
+        val page = 1
         val dummyMovies = DataDummy.generateDummyMovies()
         val movies: MutableLiveData<List<Movie>> = MutableLiveData()
         val observer = mock(Observer::class.java) as Observer<List<Movie>>
 
         movies.postValue(dummyMovies)
 
-        `when`(repository.getAllMovies()).thenReturn(movies)
+        `when`(repository.getAllMovies(1)).thenReturn(movies)
 
         viewModel.getMovies().observeForever(observer)
         verify(observer).onChanged(dummyMovies)
