@@ -22,12 +22,12 @@ class RemoteRepository {
         }
     }
 
-    fun getMovies(): LiveData<List<Movie>>{
+    fun getMovies(page: Int): LiveData<List<Movie>>{
         val movies: MutableLiveData<List<Movie>> = MutableLiveData()
 
         EspressoIdlingResource.increment()
 
-        apiClient.movies().enqueue(
+        apiClient.movies(page).enqueue(
             object : Callback<MovieResponse>{
                 override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                     Log.d(TAG, t.localizedMessage)
@@ -67,12 +67,12 @@ class RemoteRepository {
         return  movie
     }
 
-    fun getTvShows(): LiveData<List<TvShow>> {
+    fun getTvShows(page: Int): LiveData<List<TvShow>> {
         val tvShows: MutableLiveData<List<TvShow>> = MutableLiveData()
 
         EspressoIdlingResource.increment()
 
-        apiClient.tvShows().enqueue(
+        apiClient.tvShows(page).enqueue(
             object : Callback<TvResponse>{
                 override fun onFailure(call: Call<TvResponse>, t: Throwable) {
                     Log.d(TAG, t.localizedMessage)
