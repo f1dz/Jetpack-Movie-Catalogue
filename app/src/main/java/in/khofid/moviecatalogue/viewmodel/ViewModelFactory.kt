@@ -4,6 +4,7 @@ import `in`.khofid.moviecatalogue.data.source.CatalogueRepository
 import `in`.khofid.moviecatalogue.di.Injection
 import `in`.khofid.moviecatalogue.ui.detail.DetailMovieViewModel
 import `in`.khofid.moviecatalogue.ui.detail.DetailTvShowViewModel
+import `in`.khofid.moviecatalogue.ui.favorite.FavoriteMovieViewModel
 import `in`.khofid.moviecatalogue.ui.movie.MovieViewModel
 import `in`.khofid.moviecatalogue.ui.tv.TvShowViewModel
 import android.app.Application
@@ -34,6 +35,7 @@ class ViewModelFactory(private val catalogueRepository: CatalogueRepository):
             modelClass.isAssignableFrom(DetailMovieViewModel::class.java) -> DetailMovieViewModel(catalogueRepository) as (T)
             modelClass.isAssignableFrom(TvShowViewModel::class.java) -> TvShowViewModel(catalogueRepository) as (T)
             modelClass.isAssignableFrom(DetailTvShowViewModel::class.java) -> DetailTvShowViewModel(catalogueRepository) as (T)
+            modelClass.isAssignableFrom(FavoriteMovieViewModel::class.java) -> FavoriteMovieViewModel(catalogueRepository) as (T)
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
 
