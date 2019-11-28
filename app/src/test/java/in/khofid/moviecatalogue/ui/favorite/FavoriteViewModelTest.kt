@@ -29,7 +29,7 @@ class FavoriteViewModelTest {
     @Test
     fun getFavoriteMovies() {
         val dummyMovies = MutableLiveData<PagedList<Movie>>()
-        var pagedList: PagedList<Movie> = mock(PagedList::class.java) as PagedList<Movie>
+        val pagedList: PagedList<Movie> = mock(PagedList::class.java) as PagedList<Movie>
         dummyMovies.value = pagedList
 
         `when`(catalogueRepository.getAllFavoriteMovies()).thenReturn(dummyMovies)
@@ -43,7 +43,7 @@ class FavoriteViewModelTest {
     @Test
     fun getFavoriteTvShows() {
         val dummyShows = MutableLiveData<PagedList<TvShow>>()
-        var pagedList: PagedList<TvShow> = mock(PagedList::class.java) as PagedList<TvShow>
+        val pagedList: PagedList<TvShow> = mock(PagedList::class.java) as PagedList<TvShow>
         dummyShows.value = pagedList
 
         `when`(catalogueRepository.getAllFavoriteTvShows()).thenReturn(dummyShows)
