@@ -28,12 +28,13 @@ class TvShowViewModelTest {
 
     @Test
     fun getTvShows() {
+        val page = 1
         val dummyTvShows = DataDummy.generateDummyTvShow()
 
         val tvShows: MutableLiveData<List<TvShow>> = MutableLiveData()
         tvShows.postValue(dummyTvShows)
 
-        `when`(catalogueRepository.getAllTvShow()).thenReturn(tvShows)
+        `when`(catalogueRepository.getAllTvShow(page)).thenReturn(tvShows)
         val observer = mock(Observer::class.java) as Observer<List<TvShow>>
 
         viewModel.getTvShows().observeForever(observer)

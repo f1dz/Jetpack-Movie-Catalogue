@@ -39,7 +39,8 @@ class MovieCatalogueTest {
         onView(withId(R.id.rv_movie)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition<MovieAdapter.ViewHolder>(0, click()))
         onView(withId(R.id.tvTitle)).check(matches(isDisplayed()))
-        onView(withId(R.id.tvTitle)).check(matches(withText("Joker")))
+        onView(withId(R.id.fabFavorite)).check(matches(isDisplayed()))
+        onView(withId(R.id.fabFavorite)).perform(click())
     }
 
     @Test
@@ -49,6 +50,7 @@ class MovieCatalogueTest {
         onView(withId(R.id.rvTvShow)).check(matches(isDisplayed()))
         onView(withId(R.id.rvTvShow)).perform(RecyclerViewActions.actionOnItemAtPosition<TvShowAdapter.ViewHolder>(0, click()))
         onView(withId(R.id.tvTitle)).check(matches(isDisplayed()))
-        onView(withId(R.id.tvTitle)).check(matches(withText("Arrow")))
+        onView(withId(R.id.fabFavorite)).check(matches(isDisplayed()))
+        onView(withId(R.id.fabFavorite)).perform(click())
     }
 }
