@@ -62,7 +62,7 @@ class DetailTvShowActivity : AppCompatActivity() {
         return ViewModelProviders.of(activity, factory).get(DetailTvShowViewModel::class.java)
     }
 
-    fun fabClick() {
+    private fun fabClick() {
         if(viewModel.isFavorited(mTvShow)){
             viewModel.removeFavorite(mTvShow)
             Snackbar.make(container, getString(R.string.unfavorited, mTvShow.title), Snackbar.LENGTH_SHORT).show()
@@ -74,7 +74,7 @@ class DetailTvShowActivity : AppCompatActivity() {
         }
     }
 
-    fun favoriteState(){
+    private fun favoriteState(){
         if(viewModel.isFavorited(mTvShow))
             fabFavorite.setImageDrawable(getDrawable(R.drawable.ic_favorite))
         else

@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_detail_movie.*
 class DetailMovieActivity : AppCompatActivity() {
 
     private var movieId: Int = 0
-    lateinit var mMovie: Movie
+    private lateinit var mMovie: Movie
     private lateinit var viewModel: DetailMovieViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +63,7 @@ class DetailMovieActivity : AppCompatActivity() {
         return ViewModelProviders.of(activity, factory).get(DetailMovieViewModel::class.java)
     }
 
-    fun fabOnClick() {
+    private fun fabOnClick() {
         if (viewModel.isFavorited(mMovie)) {
             viewModel.removeFavorite(mMovie)
             Snackbar.make(scrollView, getString(R.string.unfavorited, mMovie.title), Snackbar.LENGTH_SHORT).show()
@@ -75,7 +75,7 @@ class DetailMovieActivity : AppCompatActivity() {
         }
     }
 
-    fun favoriteState(){
+    private fun favoriteState(){
         if (viewModel.isFavorited(mMovie)) {
             fabFavorite.setImageDrawable(getDrawable(R.drawable.ic_favorite))
         } else {

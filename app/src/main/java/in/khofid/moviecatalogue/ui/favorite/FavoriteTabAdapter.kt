@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 
-class FavoriteTabAdapter(val ctx: Context, fm: FragmentManager): FragmentStatePagerAdapter(fm) {
+class FavoriteTabAdapter(private val ctx: Context, fm: FragmentManager): FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         return when(position) {

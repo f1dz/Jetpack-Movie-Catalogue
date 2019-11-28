@@ -5,7 +5,6 @@ import `in`.khofid.moviecatalogue.data.model.TvShow
 import `in`.khofid.moviecatalogue.data.source.local.dao.MovieDao
 import `in`.khofid.moviecatalogue.data.source.local.dao.TvShowDao
 import android.content.Context
-import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -28,10 +27,6 @@ class LocalRepository(context: Context) {
         }
     }
 
-    fun getAllMovies(): LiveData<List<Movie>> {
-        return movieDao.all
-    }
-
     fun getFavoriteMoviesPaged(): DataSource.Factory<Int, Movie> {
         return movieDao.allAsPaged()
     }
@@ -46,10 +41,6 @@ class LocalRepository(context: Context) {
 
     fun isFavoritedMovie(movie: Movie): Boolean {
         return movieDao.getById(movie.id) != null
-    }
-
-    fun getAllTvShow(): LiveData<List<TvShow>> {
-        return tvShowDao.all
     }
 
     fun getFavoriteTvShowPaged(): DataSource.Factory<Int, TvShow> {
